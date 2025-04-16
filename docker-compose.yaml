@@ -1,7 +1,7 @@
 services:
 
-  family_app_api:
-    container_name: family_app_api
+  family_api:
+    container_name: family_api
     build:
       context: .
       dockerfile: Dockerfile
@@ -13,7 +13,7 @@ services:
     env_file:
       - .env
     networks:
-      - family-app-network
+      - family-network
     ports:
       - "8090:8090"
     depends_on:
@@ -31,7 +31,7 @@ services:
     ports:
       - "8532:5432"
     networks:
-      - family-app-network
+      - family-network
     volumes:
       - ../../config/postgres/family/postgres_data:/var/lib/postgresql/data/
 
@@ -39,5 +39,5 @@ volumes:
   minio-data:
 
 networks:
-  family-app-network:
+  family-network:
     driver: bridge
