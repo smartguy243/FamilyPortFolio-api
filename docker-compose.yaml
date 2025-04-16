@@ -15,7 +15,7 @@ services:
     networks:
       - family-network
     ports:
-      - "8090:8090"
+      - "7272:8080"
     depends_on:
       - familyPortfolio_db
 
@@ -40,7 +40,7 @@ services:
     image: adminer
     restart: always
     ports:
-      - "8090:8080"
+      - "7272:8080"
 
 volumes:
   minio-data:
