@@ -1,7 +1,7 @@
 services:
 
   family_api:
-    container_name: familyPortfolio_api
+    container_name: familyportfolio_api
     build:
       context: .
       dockerfile: Dockerfile
