@@ -13,7 +13,7 @@ services:
     env_file:
       - .env
     networks:
-      - family_app-network
+      - family-network
     ports:
       - "7272:8080"
     depends_on:
@@ -32,7 +32,7 @@ services:
     ports:
       - "5532:5432"
     networks:
-      - family_app-network
+      - family-network
     volumes:
       - ../../config/postgres/family/postgres_data:/var/lib/postgresql/data/
 
@@ -40,5 +40,5 @@ volumes:
   minio-data:
 
 networks:
-  family_app-network:
+  family-network:
     driver: bridge
