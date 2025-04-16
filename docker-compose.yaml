@@ -1,6 +1,6 @@
 services:
 
-  family_api:
+  familyPortfolio_api:
     container_name: familyPortfolio_api
     build:
       context: .
@@ -34,6 +34,9 @@ services:
       - familyPortfolio-network
     volumes:
       - ../../config/postgres/family/postgres_data:/var/lib/postgresql/data/
+
+volumes:
+  minio-data:
 
 networks:
   familyPortfolio-network:
