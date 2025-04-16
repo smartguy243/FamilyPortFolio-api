@@ -1,10 +1,40 @@
 services:
-  postgres:
-    image: 'postgres:latest'
-    environment:
-      - 'POSTGRES_DB=${DB}'
-      - 'POSTGRES_PASSWORD=${PASSWORD}'
-      - 'POSTGRES_USER=${USERNAME}'
-    ports:
-      - '9532:5432'
 
+  family_api:
+    container_name: familyPortfolio_api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://familyPortfolio_db:5432/${POSTGRES_DATABASE_NAME}
+      - SPRING_DATASOURCE_USERNAME=${POSTGRES_DATABASE_USER}
+      - SPRING_DATASOURCE_PASSWORD=${POSTGRES_DATABASE_PASSWORD}
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    env_file:
+      - .env
+    networks:
+      - familyPortfolio-network
+    ports:
+      - "8090:8080"
+    depends_on:
+      - familyPortfolio_db
+
+
+  familyPortfolio_db:
+    container_name: familyPortfolio_db
+    image: postgres:17.4
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=${POSTGRES_DATABASE_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_DATABASE_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DATABASE_NAME}
+    ports:
+      - "8532:5432"
+    networks:
+      - familyPortfolio-network
+    volumes:
+      - ../../config/postgres/family/postgres_data:/var/lib/postgresql/data/
+
+networks:
+  familyPortfolio-network:
+    driver: bridge

@@ -1,0 +1,10 @@
+services:
+  postgres:
+    image: 'postgres:latest'
+    environment:
+      - 'POSTGRES_DB=${DB}'
+      - 'POSTGRES_PASSWORD=${PASSWORD}'
+      - 'POSTGRES_USER=${USERNAME}'
+    ports:
+      - '9532:5432'
+
