@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://family_db:5432/${POSTGRES_DATABASE_NAME}
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://familyPortfolio_db:5432/${POSTGRES_DATABASE_NAME}
       - SPRING_DATASOURCE_USERNAME=${POSTGRES_DATABASE_USER}
       - SPRING_DATASOURCE_PASSWORD=${POSTGRES_DATABASE_PASSWORD}
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
@@ -17,11 +17,11 @@ services:
     ports:
       - "8090:8090"
     depends_on:
-      - family_db
+      - familyPortfolio_db
 
 
   familyPortfolio_db:
-    container_name: family_db
+    container_name: familyPortfolio_db
     image: postgres:17.4
     restart: unless-stopped
     environment:
