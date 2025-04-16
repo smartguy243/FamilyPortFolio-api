@@ -1,6 +1,6 @@
 spring:
   application:
-    name: familyPortfolio
+    name: family
 
   jpa:
     generate-ddl: true
