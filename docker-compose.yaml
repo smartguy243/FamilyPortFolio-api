@@ -1,12 +1,12 @@
 services:
 
   family_api:
-    container_name: family
+    container_name: family_api
     build:
       context: .
       dockerfile: Dockerfile
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://familyPortfolio_db:5432/${POSTGRES_DATABASE_NAME}
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://family_db:5432/${POSTGRES_DATABASE_NAME}
       - SPRING_DATASOURCE_USERNAME=${POSTGRES_DATABASE_USER}
       - SPRING_DATASOURCE_PASSWORD=${POSTGRES_DATABASE_PASSWORD}
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
@@ -15,29 +15,25 @@ services:
     networks:
       - family-network
     ports:
-      - "7272:8080"
+      - "7780:7777"
     depends_on:
-      - familyPortfolio_db
+      - family_db
 
 
-  familyPortfolio_db:
-    container_name: familyPortfolio_db
+  family_db:
+    container_name: family_db
     image: postgres:17.4
     restart: unless-stopped
     environment:
       - POSTGRES_USER=${POSTGRES_DATABASE_USER}
       - POSTGRES_PASSWORD=${POSTGRES_DATABASE_PASSWORD}
       - POSTGRES_DB=${POSTGRES_DATABASE_NAME}
-      - TZ=Europe/Moscow
     ports:
-      - "5532:5432"
+      - "9432:5432"
     networks:
       - family-network
     volumes:
       - ../../config/postgres/family/postgres_data:/var/lib/postgresql/data/
-
-volumes:
-  minio-data:
 
 networks:
   family-network:
