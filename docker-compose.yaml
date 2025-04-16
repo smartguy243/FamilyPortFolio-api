@@ -1,6 +1,6 @@
 services:
 
-  family_ortfolio_api:
+  family_portfolio_api:
     container_name: family_portfolio_api
     build:
       context: .
