@@ -36,14 +36,6 @@ services:
     volumes:
       - ../../config/postgres/family/postgres_data:/var/lib/postgresql/data/
 
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - "7272:8080"
-    networks:
-      - family_app-network
-
 volumes:
   minio-data:
 
