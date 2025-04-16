@@ -61,7 +61,8 @@
 
 	<profiles>
 		<profile>
-			<id>desktop</id>
+			<id>desktop
+			</id>
 			<dependencies>
 				<dependency>
 					<groupId>org.springframework.boot</groupId>
