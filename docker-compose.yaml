@@ -1,7 +1,7 @@
 services:
 
   family_api:
-    container_name: family_api
+    container_name: family
     build:
       context: .
       dockerfile: Dockerfile
@@ -28,12 +28,19 @@ services:
       - POSTGRES_USER=${POSTGRES_DATABASE_USER}
       - POSTGRES_PASSWORD=${POSTGRES_DATABASE_PASSWORD}
       - POSTGRES_DB=${POSTGRES_DATABASE_NAME}
+      - TZ=Europe/Moscow
     ports:
-      - "8532:5432"
+      - "5532:5432"
     networks:
       - family-network
     volumes:
       - ../../config/postgres/family/postgres_data:/var/lib/postgresql/data/
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8090:8080"
 
 volumes:
   minio-data:
