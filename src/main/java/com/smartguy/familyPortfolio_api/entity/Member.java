@@ -20,13 +20,13 @@ public class Member {
     @UuidGenerator
     private UUID id;
     private String firstName;
-    private String name;
+    private String lastName;
 
     public MemberRs toMemberRs(){
         return MemberRs.builder()
                 .id(this.getId())
                 .firstName(this.getFirstName())
-                .name(this.getName())
+                .lastName(this.getLastName())
                 .build();
     }
 }

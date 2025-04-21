@@ -36,7 +36,7 @@ public class MemberService {
                 .orElseThrow(()-> new MemberNotFoundException(
                         String.format("User with id %s", memberId)));
         existingMember.setFirstName(memberInput.getFirstName());
-        existingMember.setName(memberInput.getName());
+        existingMember.setLastName(memberInput.getLastName());
         return memberRepository.save(existingMember).toMemberRs();
     }
 

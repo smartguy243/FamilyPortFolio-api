@@ -13,5 +13,5 @@ public class MemberRs {
 
     private UUID id;
     private String firstName;
-    private String name;
+    private String lastName;
 }

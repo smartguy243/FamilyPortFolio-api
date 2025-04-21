@@ -18,13 +18,13 @@ public class MemberRq {
     @NotBlank
     private String firstName;
     @NotBlank
-    private String name;
+    private String lastName;
 
     public static Member toMember(MemberRq memberRq){
         return Member.builder()
                 .id(memberRq.getId())
                 .firstName(memberRq.getFirstName())
-                .name(memberRq.getName())
+                .lastName(memberRq.getLastName())
                 .build();
     }
 }
