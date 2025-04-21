@@ -15,9 +15,7 @@ import java.util.UUID;
 public class MemberRq {
 
     private UUID id;
-    @NotBlank
     private String firstName;
-    @NotBlank
     private String lastName;
 
     public static Member toMember(MemberRq memberRq){
