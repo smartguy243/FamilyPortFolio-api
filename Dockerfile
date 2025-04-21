@@ -14,6 +14,6 @@ RUN chmod +x ./mvnw
 RUN ./mvnw clean package -DskipTests
 
 # Exposer le port sur lequel l'application fonctionne
-EXPOSE 7777
+EXPOSE 8080
 
-CMD ["java", "--enable-preview", "-jar", "target/family-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "--enable-preview", "-jar", "target/familyPortfolio-api-0.0.1-SNAPSHOT.jar"]
