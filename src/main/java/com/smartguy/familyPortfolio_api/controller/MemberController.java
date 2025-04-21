@@ -34,7 +34,7 @@ public class MemberController {
     }
 
     @PutMapping("/{memberId}")
-    public MemberRs updateMember(@PathVariable UUID memberId, @RequestBody @Valid MemberRq memberRq){
+    public MemberRs updateMember(@PathVariable UUID memberId, @RequestBody MemberRq memberRq){
         return memberService.updateMember(memberRq, memberId);
     }
 
